@@ -1,8 +1,9 @@
-// Linear Potentiometer Code, 0-5kOhms roughly, some of the potentiometers
-// have different ranges unfortunately, so some need to be rescaled
+/* Linear Potentiometer Code, 0-5kOhms roughly, some of the potentiometers
+have different ranges unfortunately, so some need to be rescaled.
 
-/* The Linear Potentiometers come with three wires, VCC, SIG, GND
-Voltage, signal, and ground
+The Linear Potentiometers come with three wires, VCC, SIG, GND
+Voltage, signal, and ground, this code asks the ESP32 to read the resistence
+using one of the 15 ADC pins
 
 Code adapted from esp32io.com's article on rotary pots */ 
 
@@ -13,7 +14,8 @@ Code adapted from esp32io.com's article on rotary pots */
 float floatMap(float x, float min_in, float in_max, float out_in, float out_max, )
   return (x-in_min) * (out_max - out_min) / (in_max-in_min) + out_min;
 
-// resistence values, different for each potentiometer
+// resistence values, different for each potentiometer, implementation of 
+// all of the potentiometers will be different --> more to come soon
 int maxResist = 4095; 
 int minResist = 0; 
 int maxPos = 50;
@@ -25,7 +27,6 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   int analogResistence = analogRead(ReadPin);
   // Mapping the resistence to the 50cm potentiometer
   position = floatMap(analogResistence, minResist, maxResist, 0, maxPos)
