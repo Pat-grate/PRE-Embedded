@@ -7,7 +7,7 @@ Voltage, signal, and ground
 Code adapted from esp32io.com's article on rotary pots */ 
 
 
-#define ReadPin 8 // arbitrary gpio PIN-- find out later from Stephane's PCB
+#define ReadPin 8 // arbitrary gpio PIN-- find out later from PCB
 
 // Will rescale the 0 to max resistance to the new data value (position in centimeters)
 float floatMap(float x, float min_in, float in_max, float out_in, float out_max, )
